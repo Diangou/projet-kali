@@ -1,0 +1,108 @@
+{
+  "tool": "nmap",
+  "target": "127.0.0.1",
+  "success": true,
+  "hosts": [
+    {
+      "address": "127.0.0.1",
+      "address_type": "ipv4",
+      "status": "up",
+      "hostnames": [],
+      "ports": [
+        {
+          "port": 3000,
+          "protocol": "tcp",
+          "state": "open",
+          "reason": "syn-ack",
+          "service": {
+            "name": "ppp",
+            "product": null,
+            "version": null,
+            "extra_info": null,
+            "cpe": []
+          },
+          "scripts": []
+        },
+        {
+          "port": 5000,
+          "protocol": "tcp",
+          "state": "open",
+          "reason": "syn-ack",
+          "service": {
+            "name": "rtsp",
+            "product": null,
+            "version": null,
+            "extra_info": null,
+            "cpe": []
+          },
+          "scripts": []
+        },
+        {
+          "port": 7000,
+          "protocol": "tcp",
+          "state": "open",
+          "reason": "syn-ack",
+          "service": {
+            "name": "rtsp",
+            "product": null,
+            "version": null,
+            "extra_info": null,
+            "cpe": []
+          },
+          "scripts": []
+        },
+        {
+          "port": 8080,
+          "protocol": "tcp",
+          "state": "open",
+          "reason": "syn-ack",
+          "service": {
+            "name": "http-proxy",
+            "product": null,
+            "version": null,
+            "extra_info": null,
+            "cpe": []
+          },
+          "scripts": []
+        },
+        {
+          "port": 49161,
+          "protocol": "tcp",
+          "state": "open",
+          "reason": "syn-ack",
+          "service": {
+            "name": "unknown",
+            "product": null,
+            "version": null,
+            "extra_info": null,
+            "cpe": []
+          },
+          "scripts": []
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "metadata": {
+    "profile": "services",
+    "command": [
+      "nmap",
+      "-sT",
+      "-sV",
+      "--version-light",
+      "-T3",
+      "--max-retries",
+      "2",
+      "-n",
+      "--reason",
+      "--noninteractive",
+      "--no-stylesheet",
+      "-oX",
+      "/var/folders/g1/33__1x0j2h96bjpw6p41nlf80000gn/T/nmap-framework-pqi5le76/nmap.xml",
+      "--",
+      "127.0.0.1"
+    ],
+    "return_code": 0,
+    "stdout": "Starting Nmap 7.99 ( https://nmap.org ) at 2026-07-23 16:00 +0200\nNmap scan report for 127.0.0.1\nHost is up, received conn-refused (0.000055s latency).\nNot shown: 995 closed tcp ports (conn-refused)\nPORT      STATE SERVICE     REASON  VERSION\n3000/tcp  open  ppp?        syn-ack\n5000/tcp  open  rtsp        syn-ack\n7000/tcp  open  rtsp        syn-ack\n8080/tcp  open  http-proxy? syn-ack\n49161/tcp open  unknown     syn-ack\n3 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :\n==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============\nSF-Port3000-TCP:V=7.99%I=2%D=7/23%Time=6A621E93%P=arm-apple-darwin24.6.0%r\nSF:(GetRequest,2866,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nAccess-Control-Allow-Origin\nSF::\\x20\\*\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\nX-Frame-Options:\\x20SA\nSF:MEORIGIN\\r\\nFeature-Policy:\\x20payment\\x20'self'\\r\\nX-Recruiting:\\x20/#\nSF:/jobs\\r\\nAccept-Ranges:\\x20bytes\\r\\nCache-Control:\\x20public,\\x20max-ag\nSF:e=0\\r\\nLast-Modified:\\x20Thu,\\x2023\\x20Jul\\x202026\\x2013:01:51\\x20GMT\\r\nSF:\\nETag:\\x20W/\\\"26af-19f8f116a6c\\\"\\r\\nContent-Type:\\x20text/html;\\x20cha\nSF:rset=UTF-8\\r\\nContent-Length:\\x209903\\r\\nVary:\\x20Accept-Encoding\\r\\nDa\nSF:te:\\x20Thu,\\x2023\\x20Jul\\x202026\\x2014:00:51\\x20GMT\\r\\nConnection:\\x20c\nSF:lose\\r\\n\\r\\n<!--\\n\\x20\\x20~\\x20Copyright\\x20\\(c\\)\\x202014-2026\\x20Bjoer\nSF:n\\x20Kimminich\\x20&\\x20the\\x20OWASP\\x20Juice\\x20Shop\\x20contributors\\.\\\nSF:n\\x20\\x20~\\x20SPDX-License-Identifier:\\x20MIT\\n\\x20\\x20-->\\n\\n<!doctype\nSF:\\x20html>\\n<html\\x20lang=\\\"en\\\"\\x20data-beasties-container>\\n<head>\\n\\x\nSF:20\\x20<meta\\x20charset=\\\"utf-8\\\">\\n\\x20\\x20<title>OWASP\\x20Juice\\x20Sho\nSF:p</title>\\n\\x20\\x20<meta\\x20name=\\\"description\\\"\\x20content=\\\"Probably\\\nSF:x20the\\x20most\\x20modern\\x20and\\x20sophisticated\\x20insecure\\x20web\\x20\nSF:application\\\">\\n\\x20\\x20<meta\\x20name=\\\"viewport\\\"\\x20content=\\\"width=d\nSF:evice-width,\\x20initial-scale=1\\\">\\n\\x20\\x20<link\\x20rel=\\\"preconnect\\\"\nSF:\\x20href=\\\"htt\")%r(Help,2F,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nConne\nSF:ction:\\x20close\\r\\n\\r\\n\")%r(NCP,2F,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\\nSF:r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(SSLSessionReq,2F,\"HTTP/1\\.1\\x20400\\\nSF:x20Bad\\x20Request\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r(TLSSessionReq,2F,\nSF:\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nConnection:\\x20close\\r\\n\\r\\n\");\n==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============\nSF-Port8080-TCP:V=7.99%I=2%D=7/23%Time=6A621E8E%P=arm-apple-darwin24.6.0%r\nSF:(GetRequest,615,\"HTTP/1\\.1\\x20200\\x20OK\\r\\nConnection:\\x20close\\r\\nCach\nSF:e-control:\\x20no-cache,\\x20no-store\\r\\nPragma:\\x20no-cache\\r\\nX-Frame-O\nSF:ptions:\\x20DENY\\r\\nContent-Type:\\x20text/html;\\x20charset=utf-8\\r\\nX-Co\nSF:ntent-Type-Options:\\x20nosniff\\r\\n\\r\\n<html><head><title>Burp\\x20Suite<\nSF:/title>\\r\\n<style\\x20type=\\\"text/css\\\">\\r\\nbody\\x20{\\x20background:\\x20\nSF:#dedede;\\x20font-family:\\x20Arial,\\x20sans-serif;\\x20color:\\x20#404042;\nSF:\\x20-webkit-font-smoothing:\\x20antialiased;\\x20}\\r\\n#container\\x20{\\x20\nSF:padding:\\x200\\x2015px;\\x20margin:\\x2010px\\x20auto;\\x20background-color:\nSF:\\x20#ffffff;\\x20}\\r\\na\\x20{\\x20word-wrap:\\x20break-word;\\x20}\\r\\na:link\nSF:,\\x20a:visited\\x20{\\x20color:\\x20#e06228;\\x20text-decoration:\\x20none;\\\nSF:x20}\\r\\na:hover,\\x20a:active\\x20{\\x20color:\\x20#404042;\\x20text-decorat\nSF:ion:\\x20underline;\\x20}\\r\\nh1\\x20{\\x20font-size:\\x201\\.6em;\\x20line-hei\nSF:ght:\\x201\\.2em;\\x20font-weight:\\x20normal;\\x20color:\\x20#404042;\\x20}\\r\nSF:\\nh2\\x20{\\x20font-size:\\x201\\.3em;\\x20line-height:\\x201\\.2em;\\x20paddin\nSF:g:\\x200;\\x20margin:\\x200\\.8em\\x200\\x200\\.3em\\x200;\\x20font-weight:\\x20n\nSF:ormal;\\x20color:\\x20#404042;}\\r\\n\\.title,\\x20\\.navbar\\x20{\\x20color:\\x2\nSF:0#ffffff;\\x20background:\\x20#e06228;\\x20padding:\\x2010px\\x2015px;\\x20ma\nSF:rgin:\\x200\\x20-15px\\x2010\")%r(HTTPOptions,615,\"HTTP/1\\.1\\x20200\\x20OK\\r\nSF:\\nConnection:\\x20close\\r\\nCache-control:\\x20no-cache,\\x20no-store\\r\\nPr\nSF:agma:\\x20no-cache\\r\\nX-Frame-Options:\\x20DENY\\r\\nContent-Type:\\x20text/\nSF:html;\\x20charset=utf-8\\r\\nX-Content-Type-Options:\\x20nosniff\\r\\n\\r\\n<ht\nSF:ml><head><title>Burp\\x20Suite</title>\\r\\n<style\\x20type=\\\"text/css\\\">\\r\nSF:\\nbody\\x20{\\x20background:\\x20#dedede;\\x20font-family:\\x20Arial,\\x20san\nSF:s-serif;\\x20color:\\x20#404042;\\x20-webkit-font-smoothing:\\x20antialiase\nSF:d;\\x20}\\r\\n#container\\x20{\\x20padding:\\x200\\x2015px;\\x20margin:\\x2010px\nSF:\\x20auto;\\x20background-color:\\x20#ffffff;\\x20}\\r\\na\\x20{\\x20word-wrap:\nSF:\\x20break-word;\\x20}\\r\\na:link,\\x20a:visited\\x20{\\x20color:\\x20#e06228;\nSF:\\x20text-decoration:\\x20none;\\x20}\\r\\na:hover,\\x20a:active\\x20{\\x20colo\nSF:r:\\x20#404042;\\x20text-decoration:\\x20underline;\\x20}\\r\\nh1\\x20{\\x20fon\nSF:t-size:\\x201\\.6em;\\x20line-height:\\x201\\.2em;\\x20font-weight:\\x20normal\nSF:;\\x20color:\\x20#404042;\\x20}\\r\\nh2\\x20{\\x20font-size:\\x201\\.3em;\\x20lin\nSF:e-height:\\x201\\.2em;\\x20padding:\\x200;\\x20margin:\\x200\\.8em\\x200\\x200\\.\nSF:3em\\x200;\\x20font-weight:\\x20normal;\\x20color:\\x20#404042;}\\r\\n\\.title,\nSF:\\x20\\.navbar\\x20{\\x20color:\\x20#ffffff;\\x20background:\\x20#e06228;\\x20p\nSF:adding:\\x2010px\\x2015px;\\x20margin:\\x200\\x20-15px\\x2010\");\n==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============\nSF-Port49161-TCP:V=7.99%I=2%D=7/23%Time=6A621E93%P=arm-apple-darwin24.6.0%\nSF:r(GetRequest,52,\"HTTP/1\\.1\\x20404\\x20Not\\x20Found\\r\\nDate:\\x20Thu,\\x202\nSF:3\\x20Jul\\x202026\\x2014:00:51\\x20GMT\\r\\nConnection:\\x20close\\r\\n\\r\\n\")%r\nSF:(SSLSessionReq,2F,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\\r\\nConnection:\\x2\nSF:0close\\r\\n\\r\\n\")%r(TLSSessionReq,2F,\"HTTP/1\\.1\\x20400\\x20Bad\\x20Request\nSF:\\r\\nConnection:\\x20close\\r\\n\\r\\n\");\n\nService detection performed. Please report any incorrect results at https://nmap.org/submit/ .\nNmap done: 1 IP address (1 host up) scanned in 26.41 seconds"
+  }
+}
