@@ -1,3 +1,4 @@
+# examples/example_trivy.py
 from vuln_scanner.scanner import VulnerabilityScanner
 from vuln_scanner.trivy_tool import TrivyTool
 
