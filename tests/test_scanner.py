@@ -2,7 +2,7 @@
 import unittest
 
 from vuln_scanner.scanner import VulnerabilityScanner
-from vuln_scanner.sqlmap_tool import SqlmapTool
+from vuln_scanner.trivy_tool import TrivyTool
 
 
 class TestVulnerabilityScanner(unittest.TestCase):
@@ -14,7 +14,7 @@ class TestVulnerabilityScanner(unittest.TestCase):
         self.assertEqual(len(results), 0)
 
     def test_add_tool(self):
-        self.scanner.add_tool(SqlmapTool())
+        self.scanner.add_tool(TrivyTool())
         self.assertEqual(len(self.scanner.tools), 1)
 
 

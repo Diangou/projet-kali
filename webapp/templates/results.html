@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Résultats — VulnScope{% endblock %}
+{% block content %}
+  <div class="page-head">
+    <div>
+      <h1>Scan Results</h1>
+      <p class="desc">Résultats normalisés dans un schéma commun, quel que soit le moteur.</p>
+    </div>
+  </div>
+
+  <div class="results-head">
+    <div>
+      <div class="target" id="result-target">—</div>
+      <div class="meta" id="result-meta">chargement…</div>
+    </div>
+    <div class="results-summary" id="result-summary"></div>
+  </div>
+
+  <div class="filter-row" id="tool-row"></div>
+
+  <div class="command-block" id="command-block" style="display:none;">
+    <span class="prompt">$</span>
+    <code id="command-text"></code>
+  </div>
+
+  <div class="filter-row" id="filter-row"></div>
+
+  <div class="vuln-list" id="vuln-list"></div>
+{% endblock %}
+{% block scripts %}
+<script>const SCAN_ID = {{ scan_id | tojson }};</script>
+<script src="{{ url_for('static', filename='js/results.js') }}"></script>
+{% endblock %}

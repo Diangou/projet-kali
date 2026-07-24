@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — VulnScope{% endblock %}
+{% block content %}
+  <div class="page-head">
+    <div>
+      <h1>Dashboard</h1>
+      <p class="desc">Vue d'ensemble de l'activité de scan et des vulnérabilités détectées.</p>
+    </div>
+    <a class="btn btn-accent" href="{{ url_for('new_scan_picker') }}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+      New Scan
+    </a>
+  </div>
+
+  <div class="stat-grid" id="stat-grid"></div>
+
+  <div class="row-2">
+    <div class="panel">
+      <div class="panel-head">
+        <h3>Répartition par sévérité</h3>
+        <span class="eyebrow" id="sev-total">0 findings</span>
+      </div>
+      <div class="sev-bar" id="sev-bar"></div>
+      <div class="sev-legend" id="sev-legend"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h3>Scans en cours</h3>
+        <span class="eyebrow">temps réel</span>
+      </div>
+      <div id="running-scans" class="scan-list"><p class="empty-hint">Aucun scan en cours.</p></div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-bottom:22px;">
+    <div class="panel-head">
+      <h3>État des moteurs</h3>
+      <span class="eyebrow">vérifié via PATH</span>
+    </div>
+    <div class="engine-grid" id="engine-grid"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h3>Scans récents</h3>
+      <a class="btn btn-sm" href="{{ url_for('history') }}">Voir tout</a>
+    </div>
+    <div class="table-scroll">
+      <div class="scan-list" id="recent-scans" style="min-width:640px;"><p class="empty-hint">Aucun scan pour le moment — lancez-en un depuis « New Scan ».</p></div>
+    </div>
+  </div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

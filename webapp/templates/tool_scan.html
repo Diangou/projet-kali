@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}{{ engine.label }} — VulnScope{% endblock %}
+{% block content %}
+  <div class="page-head">
+    <div>
+      <h1>{{ engine.label }}</h1>
+      <p class="desc">{{ engine.description }}</p>
+    </div>
+    <a class="btn btn-sm" href="{{ url_for('new_scan_picker') }}">← Autre outil</a>
+  </div>
+
+  <div class="url-hero">
+    <div class="eyebrow" style="margin-bottom:8px;">{{ field.label }}</div>
+    <div class="url-input-row">
+      <input id="scan-input" type="text" placeholder="{{ field.placeholder }}">
+      <button class="btn btn-accent" id="scan-btn" disabled>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+        Scanner
+      </button>
+    </div>
+    <div class="url-hint" id="input-hint"></div>
+
+    <label class="authz-gate">
+      <input type="checkbox" id="authz-check">
+      <span><strong>Je confirme disposer d'une autorisation écrite</strong> pour tester cette cible.</span>
+    </label>
+  </div>
+
+  <div id="result-panel" style="display:none;">
+    <div class="results-head">
+      <div>
+        <div class="target" id="result-target">—</div>
+        <div class="meta" id="result-meta">—</div>
+      </div>
+      <div class="results-summary" id="result-summary"></div>
+    </div>
+
+    <div class="command-block" id="command-block" style="display:none;">
+      <span class="prompt">$</span>
+      <code id="command-text"></code>
+    </div>
+
+    <div class="filter-row" id="filter-row"></div>
+    <div class="vuln-list" id="vuln-list"></div>
+  </div>
+{% endblock %}
+{% block scripts %}
+<script>
+  const TOOL_ID = {{ tool_id | tojson }};
+  const FIELD_PARAM = {{ field.param | tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/tool_scan.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}New Scan — VulnScope{% endblock %}
+{% block content %}
+  <div class="page-head">
+    <div>
+      <h1>New Scan</h1>
+      <p class="desc">Choisis un outil. Une cible, un bouton, un résultat.</p>
+    </div>
+  </div>
+
+  <div class="engine-cards" id="picker-cards"></div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/scan_picker.js') }}"></script>
+{% endblock %}
