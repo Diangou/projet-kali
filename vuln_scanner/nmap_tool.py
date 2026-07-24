@@ -68,6 +68,13 @@ class NmapTool:
             "-sV",
             "--version-light",
         ],
+        "quick": [
+            "-sT",
+            "-sV",
+            "--version-light",
+            "--top-ports",
+            "100",
+        ],
         "safe": [
             "-sT",
             "-sV",

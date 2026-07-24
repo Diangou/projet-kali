@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}VulnScope{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div>
+          <div class="brand-word">VULNSCOPE</div>
+          <div class="brand-sub">authorized audits only</div>
+        </div>
+      </div>
+
+      <nav class="primary-nav">
+        <div class="nav-group-label">Workspace</div>
+        <a class="nav-item {{ 'active' if request.path == '/' }}" href="{{ url_for('dashboard') }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          Dashboard
+        </a>
+        <a class="nav-item {{ 'active' if request.path.startswith('/scan/new') }}" href="{{ url_for('new_scan_picker') }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+          New Scan
+        </a>
+        <a class="nav-item {{ 'active' if request.path == '/history' }}" href="{{ url_for('history') }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a1 1 0 0 1 1-1h9l6 6v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"/><path d="M14 4v5a1 1 0 0 0 1 1h5"/><path d="M9 15h6M9 12h3"/></svg>
+          Scan History
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="authz-card">
+          <b><span class="authz-dot"></span>Authorized use only</b>
+          Only run scans against targets you own or have written permission to test.
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

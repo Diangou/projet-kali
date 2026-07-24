@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Scan History — VulnScope{% endblock %}
+{% block content %}
+  <div class="page-head">
+    <div>
+      <h1>Scan History</h1>
+      <p class="desc">Historique complet des scans lancés sur ce poste.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="table-scroll">
+      <div class="scan-list" id="all-scans" style="min-width:640px;"><p class="empty-hint">Chargement…</p></div>
+    </div>
+  </div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/history.js') }}"></script>
+{% endblock %}

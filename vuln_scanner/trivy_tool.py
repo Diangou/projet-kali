@@ -9,11 +9,15 @@ class TrivyTool(Tool):
     def __init__(self, timeout=120):
         super().__init__('trivy')
         self.timeout = timeout
+        self.last_command = None
 
     def scan(self, target):
+        command = ['trivy', 'image', '--format', 'json', '--quiet', target]
+        self.last_command = command
+
         try:
             process = subprocess.run(
-                ['trivy', 'image', '--format', 'json', '--quiet', target],
+                command,
                 capture_output=True,
                 text=True,
                 encoding='utf-8',

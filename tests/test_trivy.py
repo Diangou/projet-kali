@@ -28,6 +28,48 @@ class TestTrivyTool(unittest.TestCase):
             encoding='utf-8',
             timeout=self.tool.timeout,
         )
+        self.assertEqual(
+            self.tool.last_command,
+            ['trivy', 'image', '--format', 'json', '--quiet', 'alpine:latest'],
+        )
+
+    @patch('vuln_scanner.trivy_tool.subprocess.run')
+    def test_scan_success_with_registry_url(self, mock_run):
+        payload = {'Results': []}
+        mock_run.return_value = MagicMock(
+            returncode=0, stdout=json.dumps(payload), stderr=''
+        )
+
+        target = 'ghcr.io/diangou/projet-kali:latest'
+        result = self.tool.scan(target)
+
+        self.assertEqual(result, payload)
+        mock_run.assert_called_once_with(
+            ['trivy', 'image', '--format', 'json', '--quiet', target],
+            capture_output=True,
+            text=True,
+            encoding='utf-8',
+            timeout=self.tool.timeout,
+        )
+
+    @patch('vuln_scanner.trivy_tool.subprocess.run')
+    def test_scan_success_with_private_registry_url(self, mock_run):
+        payload = {'Results': []}
+        mock_run.return_value = MagicMock(
+            returncode=0, stdout=json.dumps(payload), stderr=''
+        )
+
+        target = 'registry.example.com:5000/team/app:1.2.3'
+        result = self.tool.scan(target)
+
+        self.assertEqual(result, payload)
+        mock_run.assert_called_once_with(
+            ['trivy', 'image', '--format', 'json', '--quiet', target],
+            capture_output=True,
+            text=True,
+            encoding='utf-8',
+            timeout=self.tool.timeout,
+        )
 
     @patch('vuln_scanner.trivy_tool.subprocess.run')
     def test_scan_not_installed(self, mock_run):
@@ -91,6 +133,25 @@ class TestTrivyTool(unittest.TestCase):
 
         self.assertEqual(summary, {
             'CRITICAL': 1, 'HIGH': 2, 'MEDIUM': 1, 'LOW': 1,
+        })
+
+    @patch.object(TrivyTool, 'scan')
+    def test_get_summary_counts_by_severity_for_registry_url(self, mock_scan):
+        mock_scan.return_value = {
+            'Results': [
+                {
+                    'Vulnerabilities': [
+                        {'Severity': 'CRITICAL'},
+                        {'Severity': 'MEDIUM'},
+                    ]
+                },
+            ]
+        }
+
+        summary = self.tool.get_summary('ghcr.io/diangou/projet-kali:latest')
+
+        self.assertEqual(summary, {
+            'CRITICAL': 1, 'HIGH': 0, 'MEDIUM': 1, 'LOW': 0,
         })
 
     @patch.object(TrivyTool, 'scan')
